@@ -6,17 +6,14 @@ Single cell RNA-seq analysis with iterative clustering (SAIC) is a method to ide
                     
 2. package dependency: You need R package "cluster", "cclust", "clusterSim", and "parallel". please install these packages before installing SAIC.
 
-3. To set up a run, you can start with the following scripts:
+3. To set up a run, you can start with the following example scripts:
 
-    cluster <- c(2:10)
-    
-    pvalue <- c(1e-7,1e-6,1e-5,1e-4,1e-3,1e-2)
-    
-    matrix_kmeans <- para_select(selected, cluster, pvalue, 5, method="kmeans")
-    
-    result <- do.call("rbind", matrix_kmeans)
+		cluster <- c(2:10)
+		pvalue <- c(1e-7,1e-6,1e-5,1e-4,1e-3,1e-2)	
+		matrix_kmeans <- para_select(selected, cluster, pvalue, method="kmeans")
+		result <- do.call("rbind", matrix_kmeans)
     
 
   You can then either plot or observe the result matrix to decide what is the best combination of parameters. For example, 
-  
+
     result_7_03 <- cluster_analysis(data = data  ,cluster_number = 7,pvalue = 1e-3, method="kmeans")
